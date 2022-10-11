@@ -1,6 +1,36 @@
 <?php 
     session_start(); 
-    if ( isset( $_SESSION['isLogged'] ) ) unset( $_SESSION['isLogged'] );  
+    if ( isset( $_SESSION['isLogged'] ) ){
+        unset( $_SESSION['isLogged'] ); 
+    }
+    
+
+
+    $array = explode("\n", file_get_contents('karya.txt'));
+    $indexed_array = array('artis','judul','harga');
+    $new_array = array($array);
+    $array_baru =array($new_array);
+    
+    foreach($new_array as $key => &$arr){
+        foreach($arr as $kunci => &$aww){
+            for($i = 0; $i < count($array_baru[$key]); $i++){
+                if($i == count($array_baru[$key])-1){
+                    if(count($array_baru[$key])!=4){
+                        $parts = preg_split('/\s+/', trim($aww));
+                        $array_baru[$key][$kunci] = $parts;
+                        $array_baru[$key][$kunci] = array_combine($indexed_array,$parts);
+                    }else{
+                        array_push($array_baru, []);
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    echo '<pre/>';print_r($array_baru);
+
+    $_SESSION["koleksi"] = $array_baru;
 ?>
 
 <!DOCTYPE html>
