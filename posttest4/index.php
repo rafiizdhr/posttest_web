@@ -13,19 +13,19 @@
     
     foreach($new_array as $key => &$arr){
         foreach($arr as $kunci => &$aww){
-            for($i = 0; $i < count($array_baru[$key]); $i++){
-                if($i == count($array_baru[$key])-1){
-                    if(count($array_baru[$key])!=4){
-                        $parts = preg_split('/\s+/', trim($aww));
-                        $array_baru[$key][$kunci] = $parts;
-                        $array_baru[$key][$kunci] = array_combine($indexed_array,$parts);
-                    }else{
-                        array_push($array_baru, []);
-                    }
+            print_r($kunci);
+            if($key == count($new_array)-1){
+                if($kunci != 4){
+                    $parts = preg_split('/\s+/', trim($aww));
+                    $array_baru[$key][$kunci] = $parts;
+                    $array_baru[$key][$kunci] = array_combine($indexed_array,$parts);
+                }else{
+                    $parts = preg_split('/\s+/', trim($aww));
+                    array_push($array_baru, [array_combine($indexed_array,$parts)]);
                 }
             }
-            
         }
+
     }
     
     echo '<pre/>';print_r($array_baru);
