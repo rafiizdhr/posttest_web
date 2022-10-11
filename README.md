@@ -1,7 +1,7 @@
-Akun Admin
+Akun Admin ||
 Username : admin
 Password : admin123
 
-Akun User
+Akun User ||
 Username : heidar
 Password : heidar123
