@@ -1,4 +1,3 @@
-
 html {
     scroll-behavior: smooth;
 }
@@ -7,7 +6,7 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     max-width: 100%;
 }
 
@@ -15,8 +14,8 @@ body{
     background-color: maroon;
 }
 
-.modal {
-    display: none; 
+.modal{
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -25,7 +24,6 @@ body{
     height: 100%; 
     overflow: hidden; 
     background-color: rgba(0,0,0,0.4);
-    padding-top: 60px;
 }
 
 .modal input{
@@ -57,11 +55,34 @@ body.dark-theme .modal-content{
     border: 2px solid darkslateblue;
 }
 
+body.dark-theme .dimensi div{
+    border: 1px solid darkslateblue;
+}
+
+.dimensi{
+    width: 100%;
+    /*border: 1px solid maroon;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.dimensi div{
+    width: 100%;
+    border: 1px solid maroon;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px;
+}
+
 .modal .container{
     padding: 16px;
 }
 
 .cancelbtn {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
     font-size: 18px;
     transition: 0.4s;
     font-weight: bold;
@@ -69,7 +90,7 @@ body.dark-theme .modal-content{
     border: 0;
     border-radius: 10px;
     width: auto;
-    padding: 10px 50px;
+    padding: 10px 20px;
     background-color: maroon;
     color: aliceblue;
 }
@@ -113,8 +134,7 @@ body.dark-theme .tambah{
     font-weight: bold;
     background-color: maroon;
     color: aliceblue;
-    padding: 5px 20px;
-    margin: 10px 10px;
+    padding: 10px 20px;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -155,13 +175,14 @@ span.psw {
 .box-navigation{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: 10%;
-    margin-right: 10%;
+    justify-content: space-around;
+    /*margin-left: 10%;*/
+    /*margin-right: 10%;*/
 }
 
 .box-navigation #nav ul{
     display: flex;
+    justify-content: space-around;
     list-style: none;
 }
 
@@ -239,6 +260,7 @@ span.psw {
 .container .box{
     transition: all 2s;
     display: flex;
+    flex-direction: row;
     padding: 5px 2%;
     box-sizing: border-box;
     height: auto;
@@ -275,7 +297,7 @@ body.dark-theme .container .box .poto h2{
     margin: 0 1%;
     box-shadow: 0 2px 10px maroon;
     width: 500px;
-    height: 400px;
+    height: 500px;
     margin-bottom: 20px;
 }
 
@@ -350,21 +372,26 @@ body.dark-theme .container .box .poto h2{
 
 @media (max-width:991px)
 {
-  .site-footer [class^=col-]
-  {
+    .site-footer [class^=col-]
+    {
     margin-bottom:30px;
-  }
+    }
 }
 @media (max-width:767px)
 {
-  .site-footer
-  {
-    padding-bottom:0;
-  }
-  .site-footer .copyright-text,.site-footer .social-icons
-  {
-    text-align:center;
-  }
+    .tambah{
+        margin-left: auto;
+        margin-bottom: 20px;
+    }
+    .container .box{
+        flex-direction: column;
+    }
+    .site-footer{
+        padding-bottom:0;
+    }
+    .site-footer .copyright-text,.site-footer .social-icons{
+        text-align:center;
+    }
 }
 
 .toggle input[type='checkbox'] {

@@ -1,7 +1,7 @@
 <?php
     session_start();
-    if ( ! isset( $_SESSION['isLogged'] ) or "1" != $_SESSION['isLogged'] ){
-        header('Location: index.php');
+    if ( ! isset( $_SESSION['adminLogged'] ) or "1" != $_SESSION['adminLogged'] ){
+        header('Location: form-login.php');
     }
 ?>
 
@@ -13,7 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=800" />
     <link rel="stylesheet" href="css/style.css">
-    <title>HS Art Gallery</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>HS Art Gallery | Admin</title>
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -22,15 +23,13 @@
         <section class="navigation">
             <div class="box-navigation">
                 <div id="logo">
-                    <p>HS</p>
+                    <p>HS Admin</p>
                 </div>
                 <div id="nav">
                     <ul>
-                        <li><a href="admin.php">Home</a></li>
-                        <li><a href="#">About</a></li>
                         <li><a href="#koleksi">Koleksi</a></li>
                         <form action="logout.php" class="logout">
-                            <button type="submit" class="loginbutton">Logout</button>
+                            <button style="margin:5px 20px;" type="submit" class="loginbutton">Logout</button>
                         </form>
                         <div class="toggle">
                             <input type="checkbox" id="toggle"/>
@@ -43,19 +42,34 @@
     </header>
 
     <div id="form" class="modal">
-        <form class="modal-content animate" action="tambah.php" method="post">
+        <form class="modal-content animate" action="tambah.php" method="post" style="margin-top:8px;">
             <div class="container">
                 <label for="artis"><b>Nama Pembuat / Artis</b></label>
                 <input type="text" placeholder="Nama Lengkap" name="artis" required>
-        
+                
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Email" name="email" required>
+                
                 <label for="judul"><b>Judul Karya</b></label>
                 <input type="text" placeholder="Judul Karya" name="judul" required>
                 
                 <label for="harga"><b>Harga Karya</b></label>
                 <input type="number" placeholder="Harga Karya" name="harga" required>
 
-                <!-- <label for="gambar"><b>Gambar Karya</b></label>
-                <input type="file" name="gambar" required> -->
+                <label for="gambar"><b>Jenis Karya</b></label>
+                <div class="dimensi">
+                    <div>
+                        <label for="radio1">2 Dimensi</label>
+                        <input type="radio" name="jenis" id="radio1" value="2 Dimensi"required>
+                    </div>
+                    <div>
+                        <label for="radio2">3 Dimensi</label>
+                        <input type="radio" name="jenis" id="radio2" value="3 Dimensi"required>
+                    </div>
+                </div>
+                
+                <label for="tanggal"><b>Tanggal Pembuatan</b></label>
+                <input type="date" placeholder="Tanggal" name="tanggal" required>
 
                 <button class="loginbutton" type="submit">Tambah</button>
             </div>
@@ -66,7 +80,7 @@
         </form>
     </div>
 
-    <div class="landing">
+    <div class="landing" style="height: 30vh;">
         <h1>Welcome Back</h1>
         <h2>Admin</h2>
     </div>

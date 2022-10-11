@@ -1,36 +1,8 @@
 <?php 
-    session_start(); 
-    if ( isset( $_SESSION['isLogged'] ) ){
-        unset( $_SESSION['isLogged'] ); 
+    session_start();
+    if ( ! isset( $_SESSION['userLogged'] ) or "1" != $_SESSION['userLogged'] ){
+        header('Location: form-login.php');
     }
-    
-
-
-    $array = explode("\n", file_get_contents('karya.txt'));
-    $indexed_array = array('artis','judul','harga');
-    $new_array = array($array);
-    $array_baru =array($new_array);
-    
-    foreach($new_array as $key => &$arr){
-        foreach($arr as $kunci => &$aww){
-            print_r($kunci);
-            if($key == count($new_array)-1){
-                if($kunci != 4){
-                    $parts = preg_split('/\s+/', trim($aww));
-                    $array_baru[$key][$kunci] = $parts;
-                    $array_baru[$key][$kunci] = array_combine($indexed_array,$parts);
-                }else{
-                    $parts = preg_split('/\s+/', trim($aww));
-                    array_push($array_baru, [array_combine($indexed_array,$parts)]);
-                }
-            }
-        }
-
-    }
-    
-    echo '<pre/>';print_r($array_baru);
-
-    $_SESSION["koleksi"] = $array_baru;
 ?>
 
 <!DOCTYPE html>
@@ -40,8 +12,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=800" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <title>HS Art Gallery</title>
+    <title>HS Art Gallery | User</title>
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -57,8 +30,10 @@
                         <li><a href="index.php">Home</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#koleksi">Koleksi</a></li>
-                        <button class="loginbutton" onclick="document.getElementById('login_form').style.display='block'" style="width:auto;">Login</button>
-                        <div class="toggle">
+                        <form action="logout.php" class="logout">
+                            <button style="margin:5px 20px;" type="submit" class="loginbutton">Logout</button>
+                        </form>
+                        <div class = "toggle">
                             <input type="checkbox" id="toggle"/>
                             <label for="toggle"></label>
                         </div>
@@ -87,7 +62,8 @@
     </div>
 
     <div class="landing">
-        <h1>Selamat Datang di</h1>
+        <?php echo '<h1>Hello '.$_SESSION["user"].'</h1>' ?>
+        <h1>Welcome to</h1>
         <h2>HS Art Gallery</h2>
     </div>
 

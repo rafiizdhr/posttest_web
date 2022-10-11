@@ -6,9 +6,14 @@
         $arr = $_SESSION["koleksi"];
     }
     
-    $data = array('artis'=>$_POST['artis'],
+    $data = array(
+                'artis'=>$_POST['artis'],
+                'email'=>$_POST['email'],
                 'judul'=>$_POST['judul'],
-                'harga'=>$_POST['harga']);
+                'harga'=>$_POST['harga'],
+                'jenis'=>$_POST['jenis'],
+                'tanggal'=>$_POST['tanggal'],
+                '');
     
     for($i = 0; $i < count($arr); $i++){
         if($i == count($arr)-1){

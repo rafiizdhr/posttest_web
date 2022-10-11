@@ -72,14 +72,4 @@ window.onload = function(){
             }
         }
     });
-
-    var name = document.getElementsByClassName('nama');
-    for(let i = 0; i<boks.length; i++){
-        boks[i].addEventListener('mouseover', function(){
-            name[i].style.display = "block";
-        });
-        boks[i].addEventListener('mouseleave', function(){
-            name[i].style.display = "none";
-        });
-    }
 }
