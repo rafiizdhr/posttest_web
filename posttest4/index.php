@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if ( ! isset( $_SESSION['userLogged'] ) or "1" != $_SESSION['userLogged'] ){
-        header('Location: form-login.php');
+        header('Location: login-form.php');
     }
 ?>
 
